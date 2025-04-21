@@ -19,7 +19,7 @@ tf.config.run_functions_eagerly(True)
 # -------------------- SETUP --------------------
 if not firebase_admin._apps:
     cred_path = os.getenv("GOOGLE_CREDENTIALS_PATH")
-c   red = credentials.Certificate(cred_path)
+    cred = credentials.Certificate(cred_path)
 
     firebase_admin.initialize_app(cred)
 
