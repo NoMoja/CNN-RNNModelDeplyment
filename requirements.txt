@@ -1,8 +1,9 @@
 streamlit
 tensorflow
-opencv-python
+opencv-python-headless
 numpy
+pandas
+firebase-admin
 matplotlib
 seaborn
 thefuzz
-
