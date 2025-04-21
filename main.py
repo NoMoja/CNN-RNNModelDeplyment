@@ -4,19 +4,23 @@ import tensorflow as tf
 import cv2
 import os
 import pandas as pd
+from dotenv import load_dotenv
 from tensorflow.keras.models import load_model
 from tensorflow.keras.layers import LSTM, GlobalAveragePooling2D
 from tensorflow.keras.applications import MobileNetV2
 from tensorflow.keras import Sequential
 import firebase_admin
 from firebase_admin import credentials, firestore
+load_dotenv()
 
 # Ensure TensorFlow is running in eager mode
 tf.config.run_functions_eagerly(True)
 
 # -------------------- SETUP --------------------
 if not firebase_admin._apps:
-    cred = credentials.Certificate("resources/serviceAccountKey.json")
+    cred_path = os.getenv("GOOGLE_CREDENTIALS_PATH")
+    cred = credentials.Certificate(cred_path)
+
     firebase_admin.initialize_app(cred)
 
 db = firestore.client()
